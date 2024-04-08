@@ -1,0 +1,6 @@
+@Waffar_HostAddress = http://localhost:5252
+
+GET {{Waffar_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
