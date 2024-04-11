@@ -10,7 +10,7 @@ namespace Waffar.EntityConfigurations
         {
             builder.HasKey(t => t.UserId);
             builder.Property(t => t.UserName).IsRequired();
-            builder.Property(t => t.UserEmail).IsRequired();
+            builder.Property(t => t.Email).IsRequired();
             builder.Property(t => t.MaritialState).IsRequired();
             builder.Property(t => t.Gender).IsRequired();
             builder.Property(t => t.Phone).IsRequired();
