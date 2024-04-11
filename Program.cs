@@ -4,6 +4,8 @@ using Microsoft.EntityFrameworkCore;
 using Waffar.Context;
 using Waffar.EntityConfigurations.MapperConfigurations;
 using Waffar.Models;
+using Waffar.Services.Interfaces;
+using Waffar.Services;
 
 namespace Waffar
 {
@@ -13,12 +15,26 @@ namespace Waffar
         {
             var builder = WebApplication.CreateBuilder(args);
 
+            #region Services Injection 
             // Add services to the container.
-        
+            builder.Services.AddScoped<IChatbotService, ChatbotService>();
+            builder.Services.AddScoped<IAdminService, AdminService>();
+            builder.Services.AddScoped<IBalanceService, BalanceService>();
+            builder.Services.AddScoped<IBillService, BillService>();
+            builder.Services.AddScoped<ICurrencyUpdateService, CurrencyUpdateService>();
+            builder.Services.AddScoped<IFinancialAnalysisService, FinancialAnalysisService>();
+            builder.Services.AddScoped<IHistoryService, HistoryService>();
+            builder.Services.AddScoped<IRoleService, RoleService>();
+            builder.Services.AddScoped<ITipsAndTricksService, TipsAndTricksService>();
+            builder.Services.AddScoped<ITrackerService, TrackerService>();
+            builder.Services.AddScoped<IUpToDateService, UpToDateService>();
+            builder.Services.AddScoped<IUserService, UserService>();
+            #endregion
+
             builder.Services.AddControllers();
             builder.Services.AddDbContext<ApplicationContext>(options =>
           options.UseSqlServer(builder.Configuration.GetConnectionString("Waffar")));
-           
+
           
             // Auto Mapper Config
             var mappConfig = new MapperConfiguration(t => 

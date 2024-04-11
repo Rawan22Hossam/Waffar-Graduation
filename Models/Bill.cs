@@ -6,8 +6,8 @@ namespace Waffar.Models
     {
         public int BillId { get; set; }
         public string BillName { get; set; }
-        public string Description { get; set; }
-        public DateTime Date { get; set; }
+        public string BillDescription { get; set; }
+        public DateTime BillDueDate { get; set; }
         public int UserId { get; set; }
 
         [ForeignKey("UserId")]

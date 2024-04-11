@@ -1,11 +1,11 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Waffar.Controllers.IControllers
+namespace Waffar.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class IRoleController : ControllerBase
+    public class TipsAndTricksController : ControllerBase
     {
     }
 }

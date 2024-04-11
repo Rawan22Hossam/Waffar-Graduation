@@ -1,6 +1,6 @@
 ﻿namespace Waffar.Services.Interfaces
 {
-    public interface ITipsAndTripsService
+    public interface ITipsAndTricksService
     {
     }
 }

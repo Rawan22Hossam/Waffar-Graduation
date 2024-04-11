@@ -10,8 +10,8 @@ namespace Waffar.EntityConfigurations
         {
             builder.HasKey(t => t.BillId);
             builder.Property(t => t.BillName).IsRequired();
-            builder.Property(t => t.Date);
-            builder.Property(t => t.Description).IsRequired();
+            builder.Property(t => t.BillDueDate);
+            builder.Property(t => t.BillDescription).IsRequired();
         }
     }
 }
