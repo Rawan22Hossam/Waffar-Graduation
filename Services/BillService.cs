@@ -16,5 +16,19 @@ namespace Waffar.Services
             DateTime today = DateTime.Today;
             return _context.Bills.Where(b => b.BillDueDate.Date == today).ToList();
         }
+
+        public async Task<string> AddBill(string billName, DateTime billDueDate, string billDescription) 
+        {
+            var bill = new Bill
+            {
+                BillName = billName,
+                BillDueDate = billDueDate,
+                BillDescription = billDescription
+            };
+
+            _context.Bills.Add(bill);
+            await _context.SaveChangesAsync();
+            return "Bill added successfully";
+        }
     }
 }

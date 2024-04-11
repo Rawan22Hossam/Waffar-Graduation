@@ -15,12 +15,13 @@ namespace Waffar.Controllers
         {
             _chatbotService = chatbotService;
         }
-        [HttpPost("Chatbot")]
+      /*  [HttpPost("Chatbot")]
         public async Task<IActionResult> AskQuestionAsync([FromForm] Question model)
         {
             var result = await _chatbotService.AskQuestionAsync(model);
             return Ok(result);
         }
+      */
 
         [HttpGet("ShowQuestions")]
         public async Task<ActionResult> GetallQuestionAsync()

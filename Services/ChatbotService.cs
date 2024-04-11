@@ -1,9 +1,7 @@
-﻿using ChatGPT.Net;
-using Waffar.DTOs;
+﻿using Waffar.DTOs;
 using Waffar.Errors;
 using Waffar.Models;
 using Waffar.Services.Interfaces;
-using ChatGPT;
 using Microsoft.EntityFrameworkCore;
 using Waffar.Context;
 using System.ComponentModel;
@@ -19,6 +17,7 @@ namespace Waffar.Services
             _context = context;
 
         }
+        /*
         #region Ai Chatbot
         public async Task<object> AskQuestionAsync(Question model)
         {
@@ -55,6 +54,7 @@ namespace Waffar.Services
             }
         }
         #endregion
+        */
 
         #region Manual Chatbot
 

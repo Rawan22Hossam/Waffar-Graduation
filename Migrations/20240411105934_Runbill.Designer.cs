@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Waffar.Context;
 
@@ -11,9 +12,11 @@ using Waffar.Context;
 namespace Waffar.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    partial class ApplicationContextModelSnapshot : ModelSnapshot
+    [Migration("20240411105934_Runbill")]
+    partial class Runbill
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -115,7 +118,12 @@ namespace Waffar.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
                     b.HasKey("BillId");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Bills");
                 });
@@ -262,6 +270,17 @@ namespace Waffar.Migrations
                 });
 
             modelBuilder.Entity("Waffar.Models.Balance", b =>
+                {
+                    b.HasOne("Waffar.Models.User", "Users")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Users");
+                });
+
+            modelBuilder.Entity("Waffar.Models.Bill", b =>
                 {
                     b.HasOne("Waffar.Models.User", "Users")
                         .WithMany()

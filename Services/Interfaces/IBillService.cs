@@ -4,6 +4,7 @@ namespace Waffar.Services.Interfaces
 {
     public interface IBillService
     {
-        public List<Bill> GetBillsDueToday();
+        List<Bill> GetBillsDueToday();
+        Task<string> AddBill(string billName, DateTime billDueDate, string billDescription);
     }
 }
