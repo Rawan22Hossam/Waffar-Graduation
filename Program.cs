@@ -18,6 +18,8 @@ namespace Waffar
             #region Services Injection 
             // Add services to the container.
             builder.Services.AddScoped<IChatbotService, ChatbotService>();
+            builder.Services.AddScoped<ICashInService, CashInService>();
+            builder.Services.AddScoped<ICashOutService, CashOutService>();
             builder.Services.AddScoped<IAdminService, AdminService>();
             builder.Services.AddScoped<IBalanceService, BalanceService>();
             builder.Services.AddScoped<IBillService, BillService>();
@@ -49,10 +51,10 @@ namespace Waffar
             {
                 options.AddPolicy("RequireAdministratorRole",
                      policy => policy.RequireRole("Admin"));          //For Admin
-                options.AddPolicy("RequireUserRole",
-                     policy => policy.RequireRole("User"));         //For User 
-                options.AddPolicy("ForAuthorizedUsers",
-                     policy => policy.RequireRole("Admin", "User"));  // For Both
+                //options.AddPolicy("RequireUserRole",
+                //     policy => policy.RequireRole("User"));         //For User 
+                //options.AddPolicy("ForAuthorizedUsers",
+                //     policy => policy.RequireRole("Admin", "User"));  // For Both
 
             });
 

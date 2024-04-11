@@ -5,7 +5,7 @@
 namespace Waffar.Migrations
 {
     /// <inheritdoc />
-    public partial class ChatbotTrial : Migration
+    public partial class UserModel : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

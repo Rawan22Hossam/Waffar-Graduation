@@ -1,6 +1,7 @@
 ﻿namespace Waffar.Services.Interfaces
 {
-    public class IUserService
+    public interface IUserService
     {
+
     }
 }

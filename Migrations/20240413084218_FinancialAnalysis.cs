@@ -5,7 +5,7 @@
 namespace Waffar.Migrations
 {
     /// <inheritdoc />
-    public partial class ManualChatbot : Migration
+    public partial class FinancialAnalysis : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

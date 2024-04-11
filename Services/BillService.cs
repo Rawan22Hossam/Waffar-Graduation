@@ -7,7 +7,7 @@ namespace Waffar.Services
     public class BillService : IBillService
     {
         private readonly ApplicationContext _context;
-        public BillService(ApplicationContext context) 
+        public BillService(ApplicationContext context)
         {
             _context = context;
         }
@@ -17,7 +17,7 @@ namespace Waffar.Services
             return _context.Bills.Where(b => b.BillDueDate.Date == today).ToList();
         }
 
-        public async Task<string> AddBill(string billName, DateTime billDueDate, string billDescription) 
+        public async Task<string> AddBill(string billName, DateTime billDueDate, string billDescription)
         {
             var bill = new Bill
             {
@@ -30,5 +30,6 @@ namespace Waffar.Services
             await _context.SaveChangesAsync();
             return "Bill added successfully";
         }
+
     }
 }

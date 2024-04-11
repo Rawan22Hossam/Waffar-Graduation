@@ -10,7 +10,7 @@ namespace Waffar.EntityConfigurations
         {
             builder.HasKey(t => t.AdminId);
             builder.Property(t => t.AdminName).IsRequired();
-            builder.Property(t => t.Email).IsRequired();
+           // builder.Property(t => t.Email).IsRequired();
             builder.Property(t => t.Password).IsRequired();
         }
     }

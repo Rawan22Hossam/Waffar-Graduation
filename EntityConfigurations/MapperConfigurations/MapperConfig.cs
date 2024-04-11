@@ -8,7 +8,7 @@ namespace Waffar.EntityConfigurations.MapperConfigurations
     {
         public MapperConfig() 
         {
-             CreateMap<User, UserRole>();
+          //   CreateMap<User, UserRole>();
         }
     }
 }

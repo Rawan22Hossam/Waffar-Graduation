@@ -5,7 +5,7 @@
 namespace Waffar.Migrations
 {
     /// <inheritdoc />
-    public partial class ServiceInjection : Migration
+    public partial class CurrencyClass : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

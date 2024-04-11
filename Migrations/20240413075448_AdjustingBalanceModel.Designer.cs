@@ -12,8 +12,8 @@ using Waffar.Context;
 namespace Waffar.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20240411105934_Runbill")]
-    partial class Runbill
+    [Migration("20240413075448_AdjustingBalanceModel")]
+    partial class AdjustingBalanceModel
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -34,10 +34,6 @@ namespace Waffar.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("AdminId"));
 
                     b.Property<string>("AdminName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Email")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -80,23 +76,24 @@ namespace Waffar.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("BalanceId"));
 
-                    b.Property<int>("Income")
+                    b.Property<decimal>("Income")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("MoneySpent")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<int>("Month")
                         .HasColumnType("int");
 
-                    b.Property<int>("MoneySpent")
-                        .HasColumnType("int");
+                    b.Property<decimal>("Savings")
+                        .HasColumnType("decimal(18,2)");
 
-                    b.Property<int>("Savings")
-                        .HasColumnType("int");
-
-                    b.Property<int>("UserId")
+                    b.Property<int>("Year")
                         .HasColumnType("int");
 
                     b.HasKey("BalanceId");
 
-                    b.HasIndex("UserId");
-
-                    b.ToTable("Balance");
+                    b.ToTable("Balances");
                 });
 
             modelBuilder.Entity("Waffar.Models.Bill", b =>
@@ -118,14 +115,55 @@ namespace Waffar.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
-
                     b.HasKey("BillId");
 
-                    b.HasIndex("UserId");
-
                     b.ToTable("Bills");
+                });
+
+            modelBuilder.Entity("Waffar.Models.CashInTransaction", b =>
+                {
+                    b.Property<int>("TransactionId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("TransactionId"));
+
+                    b.Property<decimal>("Amount")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("TransactionId");
+
+                    b.ToTable("CashIns");
+                });
+
+            modelBuilder.Entity("Waffar.Models.CashOutTransaction", b =>
+                {
+                    b.Property<int>("TransactionId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("TransactionId"));
+
+                    b.Property<decimal>("Amount")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("TransactionId");
+
+                    b.ToTable("CashOuts");
                 });
 
             modelBuilder.Entity("Waffar.Models.Category", b =>
@@ -218,46 +256,6 @@ namespace Waffar.Migrations
                     b.ToTable("TipsAndTricks");
                 });
 
-            modelBuilder.Entity("Waffar.Models.User", b =>
-                {
-                    b.Property<int>("UserId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("UserId"));
-
-                    b.Property<string>("Gender")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("MaritialState")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("Password")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Phone")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Role")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("UserEmail")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("UserName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("UserId");
-
-                    b.ToTable("Users");
-                });
-
             modelBuilder.Entity("Waffar.Models.Answer", b =>
                 {
                     b.HasOne("Waffar.Models.Question", "Questions")
@@ -267,28 +265,6 @@ namespace Waffar.Migrations
                         .IsRequired();
 
                     b.Navigation("Questions");
-                });
-
-            modelBuilder.Entity("Waffar.Models.Balance", b =>
-                {
-                    b.HasOne("Waffar.Models.User", "Users")
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Users");
-                });
-
-            modelBuilder.Entity("Waffar.Models.Bill", b =>
-                {
-                    b.HasOne("Waffar.Models.User", "Users")
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Users");
                 });
 
             modelBuilder.Entity("Waffar.Models.TipsAndTricks", b =>

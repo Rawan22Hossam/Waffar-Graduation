@@ -41,8 +41,9 @@ namespace Waffar.Controllers
             {
                 return BadRequest("Bill name and due date are required.");
             }
-            var result =await _billService.AddBill(billName,billDueDate,billDescription);
+            var result = await _billService.AddBill(billName, billDueDate, billDescription);
             return Ok(result);
         }
+
     }
 }

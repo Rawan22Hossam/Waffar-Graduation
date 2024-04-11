@@ -14,4 +14,5 @@ namespace Waffar.EntityConfigurations
             builder.Property(t => t.BillDescription).IsRequired();
         }
     }
+
 }

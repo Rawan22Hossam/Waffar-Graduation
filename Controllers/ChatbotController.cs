@@ -26,7 +26,7 @@ namespace Waffar.Controllers
         [HttpGet("ShowQuestions")]
         public async Task<ActionResult> GetallQuestionAsync()
         {
-            var result = _chatbotService.GetAllQuestions();
+            var result =await _chatbotService.GetAllQuestions();
             return Ok(result);
         }
         [HttpGet("AnswerQuestion")]
