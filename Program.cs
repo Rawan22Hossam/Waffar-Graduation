@@ -6,6 +6,10 @@ using Waffar.EntityConfigurations.MapperConfigurations;
 using Waffar.Models;
 using Waffar.Services.Interfaces;
 using Waffar.Services;
+using Waffar.GenericRepository;
+using System.Text;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
 
 namespace Waffar
 {
@@ -24,6 +28,7 @@ namespace Waffar
             builder.Services.AddScoped<IBalanceService, BalanceService>();
             builder.Services.AddScoped<IBillService, BillService>();
             builder.Services.AddScoped<ICurrencyUpdateService, CurrencyUpdateService>();
+            builder.Services.AddScoped<IDiaryService, DiaryService>();
             builder.Services.AddScoped<IFinancialAnalysisService, FinancialAnalysisService>();
             builder.Services.AddScoped<IHistoryService, HistoryService>();
             builder.Services.AddScoped<IRoleService, RoleService>();
@@ -31,6 +36,7 @@ namespace Waffar
             builder.Services.AddScoped<ITrackerService, TrackerService>();
             builder.Services.AddScoped<IUpToDateService, UpToDateService>();
             builder.Services.AddScoped<IUserService, UserService>();
+            builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
             #endregion
 
             builder.Services.AddControllers();
@@ -61,6 +67,33 @@ namespace Waffar
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+
+            var key = Encoding.ASCII.GetBytes
+                                    (builder.Configuration.GetSection("Token:secretKey").Value);
+            builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                .AddJwtBearer(optyion =>
+                {
+                    optyion.TokenValidationParameters = new TokenValidationParameters()
+                    {
+                        ValidateIssuerSigningKey = true,
+                        IssuerSigningKey = new SymmetricSecurityKey(key),
+                        ValidateIssuer = false,
+                        ValidateAudience = false,
+                        ValidateLifetime = true,
+                        ClockSkew = TimeSpan.Zero
+                    };
+                });
+
+            builder.Services.AddAuthorization(options =>
+            {
+                options.AddPolicy("RequireAdministratorRole",
+                     policy => policy.RequireRole("Admin"));          //For Admin
+                options.AddPolicy("RequireClientRole",
+                     policy => policy.RequireRole("User"));         //For Client  
+                options.AddPolicy("RequireClientRole",
+                     policy => policy.RequireRole("Guest"));        // Guests
+
+            });
 
             var app = builder.Build();
 

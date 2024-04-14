@@ -8,7 +8,8 @@ namespace Waffar.EntityConfigurations.MapperConfigurations
     {
         public MapperConfig() 
         {
-          //   CreateMap<User, UserRole>();
+             CreateMap<User, RegisterDto>().ReverseMap();
+             CreateMap<User, LoginDto>().ReverseMap();
         }
     }
 }

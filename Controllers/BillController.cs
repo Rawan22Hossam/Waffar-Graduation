@@ -14,7 +14,7 @@ namespace Waffar.Controllers
         { 
             _billService = billService;
         }
-        [HttpGet("Reminders")]
+        [HttpGet("reminders-for-bill")]
         public IActionResult GetBillReminders()
         {
             var billsDueToday = _billService.GetBillsDueToday();
@@ -34,7 +34,7 @@ namespace Waffar.Controllers
             }
         }
 
-        [HttpPost("AddBill")]
+        [HttpPost("add-Bill")]
         public async Task<IActionResult> PostBillReminders(string billName, DateTime billDueDate, string billDescription)
         {
             if (string.IsNullOrWhiteSpace(billName) || billDueDate == default || string.IsNullOrWhiteSpace(billDescription))

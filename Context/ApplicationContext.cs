@@ -36,5 +36,7 @@ namespace Waffar.Context
         public DbSet<Diary> Diary { get; set; }
         public DbSet<Question> Questions { get; set; }
         public DbSet<TipsAndTricks> TipsAndTricks { get; set; }
+        public DbSet<User> Users { get; set; }
+        public DbSet<Role> Roles { get; set; }
     }
 }

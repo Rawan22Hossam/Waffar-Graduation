@@ -16,19 +16,6 @@ namespace Waffar.Controllers
             _mapper = mapper;
         }
 
-    /*    [HttpGet]
-        public async Task<string> RegisterationAsync(RegisterDto register) 
-        {
-           var registerationData = _mapper.Map<User>(register);
-
-            if (registerationData == null) 
-            { return "Please enter your Credentials"; }
-
-            if (registerationData.Password.Length < 9)
-            { return "Weak Password , Please enter more tan 9 characters"; }
-           
-
-        }
-    */
+    
     }
 }

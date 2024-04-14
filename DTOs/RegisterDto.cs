@@ -1,8 +1,6 @@
-﻿using System.Data;
-
-namespace Waffar.Models
+﻿namespace Waffar.DTOs
 {
-    public class User
+    public class RegisterDto
     {
         public int Id { get; set; }
         public string Name { get; set; }
@@ -11,8 +9,6 @@ namespace Waffar.Models
         public string PhoneNumber { get; set; }
         public string MaritialState { get; set; }
         public string Gender { get; set; }
-
-        public int RoleId { get; set; }
-        public Role Roles { get; set; }
     }
+
 }

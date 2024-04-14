@@ -16,7 +16,7 @@ namespace Waffar.Controllers
             _tipsService = tipsService;
         }
 
-        [HttpGet("random")]
+        [HttpGet("show-random-tip")]
         public async Task<IActionResult> GetRandomTip()
         {
             var tip = await _tipsService.GetRandomTip();
@@ -31,7 +31,7 @@ namespace Waffar.Controllers
             }
         }
 
-        [HttpPost("add")]
+        [HttpPost("add-new-tip")]
         public async Task<IActionResult> AddTip([FromBody] string tip)
         {
             await _tipsService.AddTipAsync(tip);

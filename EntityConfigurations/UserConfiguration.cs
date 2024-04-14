@@ -7,6 +7,16 @@ namespace Waffar.EntityConfigurations
 
     public class UserConfiguration
     {
+        public void Configure(EntityTypeBuilder<User> builder)
+        {
+            builder.HasKey(t => t.Id);
+            builder.Property(t => t.Name).IsRequired();
+            builder.Property(t => t.Email).IsRequired();
+            builder.Property(t => t.MaritialState).IsRequired();
+            builder.Property(t => t.Gender).IsRequired();
+            builder.Property(t => t.PhoneNumber).IsRequired();
+            builder.Property(t => t.Password).IsRequired();
+        }
     }
 }
         /*

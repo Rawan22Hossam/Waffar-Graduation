@@ -15,7 +15,7 @@ namespace Waffar.Controllers
         {
             _currencyService = currencyService;
         }
-        [HttpPost("convert")]
+        [HttpPost("convert-currency")]
         public async Task<IActionResult> ConvertCurrency([FromBody] Currency currency)
         {
             decimal result = await _currencyService.ConvertCurrency(currency);

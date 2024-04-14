@@ -13,7 +13,7 @@ namespace Waffar.Controllers
         {
             _analysisService = analysisService;
         }
-        [HttpGet("current")]
+        [HttpGet("financial-analysis-charts")]
         public async Task<IActionResult> GetPieChart()
         {
             var chart = await _analysisService.GetBalanceChart();

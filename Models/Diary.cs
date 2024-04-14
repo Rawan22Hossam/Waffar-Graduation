@@ -3,8 +3,9 @@
     public class Diary
     {
         public int DiaryId { get; set; }
-        public string DiaryName { get; set; }
-        public DateTime Date { get; set; }
-        public string Description { get; set; }
+        public string Title { get; set; }
+        public string Content { get; set; }
+        public DateTime CreatedAt { get; set; }
+        public DateTime ModifiedAt { get; set; }
     }
 }
