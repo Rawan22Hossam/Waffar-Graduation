@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using AutoMapper;
 using Waffar.DTOs;
 using Waffar.Models;
 
@@ -8,8 +9,12 @@ namespace Waffar.EntityConfigurations.MapperConfigurations
     {
         public MapperConfig() 
         {
-             CreateMap<User, RegisterDto>().ReverseMap();
-             CreateMap<User, LoginDto>().ReverseMap();
+            // User -> AuthenticateResponse
+           // CreateMap<User, AuthenticateResponse>();
+
+            // RegisterRequest -> User
+            CreateMap<RegisterRequest, User>();
+            CreateMap<LoginRequest, User>();    
         }
     }
 }

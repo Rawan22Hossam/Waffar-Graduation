@@ -12,7 +12,5 @@ namespace Waffar.Models
         public string MaritialState { get; set; }
         public string Gender { get; set; }
 
-        public int RoleId { get; set; }
-        public Role Roles { get; set; }
     }
 }

@@ -28,13 +28,13 @@ namespace Waffar
             builder.Services.AddScoped<IBalanceService, BalanceService>();
             builder.Services.AddScoped<IBillService, BillService>();
             builder.Services.AddScoped<ICurrencyUpdateService, CurrencyUpdateService>();
-            builder.Services.AddScoped<IDiaryService, DiaryService>();
             builder.Services.AddScoped<IFinancialAnalysisService, FinancialAnalysisService>();
             builder.Services.AddScoped<IHistoryService, HistoryService>();
             builder.Services.AddScoped<IRoleService, RoleService>();
             builder.Services.AddScoped<ITipsAndTricksService, TipsAndTricksService>();
             builder.Services.AddScoped<ITrackerService, TrackerService>();
             builder.Services.AddScoped<IUpToDateService, UpToDateService>();
+            builder.Services.AddScoped<IDiaryService, DiaryService>(); 
             builder.Services.AddScoped<IUserService, UserService>();
             builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
             #endregion

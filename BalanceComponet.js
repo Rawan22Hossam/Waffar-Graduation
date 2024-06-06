@@ -9,7 +9,7 @@
 //    useEffect(() => {
 //        const fetchBalanceData = async () => {
 //            try {
-//                const data = await axios.get('/api/FinancialAnalysis/current');;
+//                const data = await axios.get('/api/FinancialAnalysis/financial-analysis-charts');;
 //                setBalanceData(data);
 //            } catch (error) {
 //                console.error('Error fetching balance data:', error);
@@ -45,4 +45,4 @@
 //    );
 //};
 
-//export default BalanceComponent;
+export default BalanceComponent;

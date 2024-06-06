@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Identity.Data;
 using Microsoft.AspNetCore.Mvc;
 using Waffar.DTOs;
 using Waffar.Errors;
+using Waffar.Models;
 using Waffar.Services.Interfaces;
 
 namespace Waffar.Controllers
@@ -17,18 +18,32 @@ namespace Waffar.Controllers
         {
             _userService = userService;
         }
+        [HttpPost("register")]
+        public IActionResult Register(User newUser)
+        {
+            if (newUser == null)
+            {
+                return BadRequest("User data is null.");
+            }
 
-        //[HttpPost("Register")]
+            // You can add validation logic here
 
-        //public async Task<ActionResult<BaseError<string>>> Register(RegisterDto register)
+            var registeredUser = _userService.Register(newUser);
+            return Ok(registeredUser);
+        }
+
+        //[HttpPost("login")]
+        //public async Task<IActionResult> Login(string name , string password)
         //{
-        //    var result = await _userService.Register(register);
-        //    if (result.ErrorCode == (int)ErrorsEnum.Success)
+        //    var user = await _userService.LoginAsync(name, password);
+        //    if (user != null)
         //    {
-        //        return Ok(result);
+        //        return Ok(new { message = "Login successful" });
         //    }
-        //    return BadRequest(result);
-
+        //    else
+        //    {
+        //        return Unauthorized(new { message = "Invalid username or password" });
+        //    }
         //}
     }
 }

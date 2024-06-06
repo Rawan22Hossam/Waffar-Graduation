@@ -16,7 +16,7 @@ namespace Waffar.Context
             modelBuilder.ApplyConfiguration(new BalanceConfiguration());
              modelBuilder.ApplyConfiguration(new BillConfiguration());
             modelBuilder.ApplyConfiguration(new CategoryConfiguration());
-            modelBuilder.ApplyConfiguration(new DiaryConfiguration());
+            //modelBuilder.ApplyConfiguration(new DiaryConfiguration());
             // modelBuilder.ApplyConfiguration(new MapperConfigurations() );
             modelBuilder.ApplyConfiguration(new QuestionConfiguration());
             modelBuilder.ApplyConfiguration(new TipsAndTricksConfiguration());
@@ -37,6 +37,5 @@ namespace Waffar.Context
         public DbSet<Question> Questions { get; set; }
         public DbSet<TipsAndTricks> TipsAndTricks { get; set; }
         public DbSet<User> Users { get; set; }
-        public DbSet<Role> Roles { get; set; }
     }
 }

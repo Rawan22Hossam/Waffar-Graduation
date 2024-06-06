@@ -4,8 +4,8 @@ namespace Waffar.Services.Interfaces
 {
     public interface IDiaryService
     {
-        Task<IEnumerable<Diary>> GetEntriesAsync();
-        Task<Diary> GetEntryByIdAsync(int id);
-        Task<Diary> AddEntryAsync(Diary model);
+        List<Diary> GetAllEntries();
+        Task<Diary> GetEntryById(int id);
+        Diary AddEntry(Diary entry);
     }
 }

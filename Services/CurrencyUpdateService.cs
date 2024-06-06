@@ -18,6 +18,13 @@ namespace Waffar.Services
             { "EGP_USD", 1 / 15.7m }, // Example rate for EGP to USD
             { "KWD_USD", 1 / 0.303m }, // Example rate for KWD to USD
             { "SAR_USD", 1 / 3.75m }, // Example rate for SAR to USD
+
+                {"EGP_SAR", 12.86m },
+                {"EGP_KWD", 1/156.59m },
+                {"KWD_EGP", 156.59m },
+                {"KWD_SAR", 12.16m },
+                {"SAR_EGP", 1/12.86m },
+                {"SAR_KWD", 1/12.16m }
         };
 
             // Determine the conversion key based on FromCurrency and ToCurrency

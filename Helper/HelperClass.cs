@@ -17,27 +17,27 @@ namespace Waffar.Helper
             }
         }
 
-        public static string CreateToken(User user, string secretKey)
-        {
-            List<Claim> claims = new List<Claim>
-            {
-                 new Claim("UserId", user.Id.ToString()),
-                new Claim(ClaimTypes.Name, user.Name),
-                new Claim(ClaimTypes.Role, user.Roles.RoleName)
-            };
+        //public static string CreateToken(User user, string secretKey)
+        //{
+        //    List<Claim> claims = new List<Claim>
+        //    {
+        //         new Claim("UserId", user.Id.ToString()),
+        //        new Claim(ClaimTypes.Name, user.Name),
+        //        new Claim(ClaimTypes.Role, user.Roles.RoleName)
+        //    };
 
-            var key = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes(secretKey));
+        //    var key = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes(secretKey));
 
-            var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha512Signature);
+        //    var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha512Signature);
 
-            var token = new JwtSecurityToken(
-                claims: claims,
-                expires: DateTime.Now.AddDays(1),
-                signingCredentials: creds);
+        //    var token = new JwtSecurityToken(
+        //        claims: claims,
+        //        expires: DateTime.Now.AddDays(1),
+        //        signingCredentials: creds);
 
-            var jwt = new JwtSecurityTokenHandler().WriteToken(token);
+        //    var jwt = new JwtSecurityTokenHandler().WriteToken(token);
 
-            return jwt;
-        }
+        //    return jwt;
+        //}
     }
 }
