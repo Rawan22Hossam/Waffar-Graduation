@@ -47,11 +47,10 @@ namespace Waffar.Services
             }
         }
 
-        //public Task<LoginRequest> LoginAsync(string name, string password)
-        //{
-        //    return _context.Users
-        //        .FirstOrDefaultAsync(u => u.Name == name && u.Password == password);
-            
-        //}
+        public async Task<User> ValidateUserAsync(string name, string password)
+        {
+            return await _context.Users
+                .FirstOrDefaultAsync(u => u.Name == name);
+        }
     }
 }

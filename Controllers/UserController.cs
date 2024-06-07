@@ -32,18 +32,18 @@ namespace Waffar.Controllers
             return Ok(registeredUser);
         }
 
-        //[HttpPost("login")]
-        //public async Task<IActionResult> Login(string name , string password)
-        //{
-        //    var user = await _userService.LoginAsync(name, password);
-        //    if (user != null)
-        //    {
-        //        return Ok(new { message = "Login successful" });
-        //    }
-        //    else
-        //    {
-        //        return Unauthorized(new { message = "Invalid username or password" });
-        //    }
-        //}
+        [HttpPost("login")]
+        public async Task<IActionResult> Login(string name, string password)
+        {
+            var user = await _userService.ValidateUserAsync(name, password);
+            if (user != null)
+            {
+                return Ok(new { message = "Login successful" });
+            }
+            else
+            {
+                return Unauthorized(new { message = "Invalid username or password" });
+            }
+        }
     }
 }
